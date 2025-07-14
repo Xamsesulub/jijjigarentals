@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Last opp bilde</title>
+    <link rel="stylesheet" href="upload.css">
+    <script defer src="upload.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Last opp bilde til eiendom</h1>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label for="propertyId">Property ID:</label>
+        <input type="text" id="propertyId" name="propertyId" required>
+
+        <label for="file">Velg bilde:</label>
+        <input type="file" id="file" name="file" accept="image/*" required>
+
+        <div id="preview"></div>
+
+        <button type="submit">Last opp</button>
+    </form>
+
+    <div id="response"></div>
+</div>
+
+
+</body>
+</html>

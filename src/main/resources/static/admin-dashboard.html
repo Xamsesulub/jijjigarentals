@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard – Jigjiga Rentals</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<body>
+
+<nav class="sidebar">
+    <h2>Adminpanel</h2>
+    <ul>
+        <li><button onclick="loadUsers()">👤 Brukere</button></li>
+        <li><button onclick="loadProperties()">🏠 Boliger</button></li>
+        <li><button onclick="loadBookings()">📅 Bookinger</button></li>
+    </ul>
+</nav>
+
+<main class="content">
+    <header>
+        <section class="stats" id="stats">
+            <!-- Statistikker kommer her -->
+        </section>
+
+        <h1>Velkommen, Administrator</h1>
+        <p>Full oversikt over plattformen</p>
+    </header>
+
+    <section id="dashboard-content">
+        <p>Velg en kategori i menyen</p>
+    </section>
+</main>
+
+<script src="admin-dashboard.js"></script>
+</body>
+</html>
