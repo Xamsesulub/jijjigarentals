@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrer deg – Jigjiga Rentals</title>
+  <link rel="stylesheet" href="signup.css">
+  <script defer src="signup.js"></script>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h1>Registrer deg</h1>
+    <form id="signupForm">
+      <input type="text" id="fullName" placeholder="Fullt navn" required />
+      <input type="email" id="email" placeholder="E-post" required />
+      <input type="password" id="password" placeholder="Passord" required />
+      <input type="password" id="confirmPassword" placeholder="Bekreft passord" required />
+
+      <select id="role" required>
+        <option value="">Velg rolle</option>
+        <option value="USER">Bruker</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+
+      <button type="submit">Opprett konto</button>
+    </form>
+
+    <p>Har du allerede en konto? <a href="login.html">Logg inn her</a></p>
+  </div>
+
+</body>
+</html>

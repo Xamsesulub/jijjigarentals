@@ -1,19 +1,24 @@
 package com.example.jijjigarentals.controllers;
 
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.jijjigarentals.dtos.BookingRequest;
 import com.example.jijjigarentals.models.Booking;
 import com.example.jijjigarentals.models.Property;
 import com.example.jijjigarentals.models.User;
 import com.example.jijjigarentals.repositories.BookingRepository;
 import com.example.jijjigarentals.repositories.PropertyRepository;
-import com.example.jijjigarentals.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/bookings")
@@ -65,5 +70,6 @@ public class BookingController {
         booking.setStatus(Booking.Status.AVSLAATT);
         return bookingRepository.save(booking);
     }
+    
 
 }

@@ -6,25 +6,36 @@ import com.example.jijjigarentals.dtos.LoginRequest;
 import com.example.jijjigarentals.dtos.RegisterRequest;
 import com.example.jijjigarentals.models.User;
 import com.example.jijjigarentals.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
-    @Autowired
-    private JwtUtil jwtUtil;
+    @PostMapping("/signup")
+    public ResponseEntity<String> signup(@RequestBody RegisterRequest request) {
+        if (userRepository.existsByEmail(request.getEmail())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("E-post er allerede i bruk");
+        }
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+        User user = new User();
+        user.setName(request.getName());
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole(request.getRole());
+
+        userRepository.save(user);
+        return ResponseEntity.ok("Bruker registrert");
+    }
 
     @PostMapping("/register")
     public JwtResponse register(@RequestBody RegisterRequest request) {
